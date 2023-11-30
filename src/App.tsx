@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Rating} from "./components/Rating";
+import {Accordion} from "./components/Accordion";
 
 function App() {
+  const totalStarsCount = 5;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AppTitle title={"This is App component"} />
+      <AppTitle title={"Another title"} />
+      <Rating totalStarsCount={totalStarsCount} selectedStars={4}/>
+      <Rating totalStarsCount={totalStarsCount} selectedStars={2}/>
+      <Accordion title={"Accordion title"} collapsed={true}/>
+      <Accordion title={"Another Accordion title"} collapsed={false}/>
+    </>
   );
+}
+
+interface AppTitlePropsType {
+  title: string
+}
+
+function AppTitle({title}: AppTitlePropsType){
+  return <h1>{title}</h1>
 }
 
 export default App;
