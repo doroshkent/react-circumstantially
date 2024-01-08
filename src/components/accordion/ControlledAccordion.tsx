@@ -5,7 +5,7 @@ interface AccordionPropsType {
   collapsed: boolean
 }
 
-export function Accordion(props: AccordionPropsType) {
+export function ControlledAccordion(props: AccordionPropsType) {
   return <>
     <AccordionTitle title={ props.title } />
     { !props.collapsed && <AccordionBody /> }

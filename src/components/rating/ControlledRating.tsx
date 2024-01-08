@@ -6,7 +6,7 @@ interface RatingProps {
   selectedStars: number
 }
 
-export function Rating({totalStarsCount, selectedStars}: RatingProps) {
+export function ControlledRating({totalStarsCount, selectedStars}: RatingProps) {
   const createArray = (length: number) => [...Array(length)]
   return <div>
     {createArray(totalStarsCount).map((_, index) => {
