@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import { Btn } from "components/onOffBtn/Btn";
 
-export const OnOffBtn: React.FC = () => {
-  const [ btnIsActive, setBtnIsActive ] = useState<boolean>( false );
-  const [ bulbColor, setBulbColor ] = useState<string>( "red" )
+type OnOffBtnType = {
+  btnOnIsActive: boolean
+  setBtnOnIsActive: (value: boolean) => void
+}
+
+export const OnOffBtn: React.FC<OnOffBtnType> = (props) => {
+  const [ bulbColor, setBulbColor ] = useState<string>( "red" );
 
   const btnClickHandler = (isOn: boolean) => {
-    setBtnIsActive( isOn );
+    props.setBtnOnIsActive( isOn );
     isOn ? setBulbColor( "green" ) : setBulbColor( "red" );
 
   }
 
   return (
     <OnOffBtnWrapper>
-      <Btn isActive={ btnIsActive } color={ "green" } title={ "Turn ON" } callback={ () => btnClickHandler( true ) } />
-      <Btn isActive={ !btnIsActive } color={ "red" } title={ "Turn off" } callback={ () => btnClickHandler( false ) } />
+      <Btn isActive={ props.btnOnIsActive } color={ "green" } title={ "Turn ON" }
+           callback={ () => btnClickHandler( true ) } />
+      <Btn isActive={ !props.btnOnIsActive } color={ "red" } title={ "Turn off" }
+           callback={ () => btnClickHandler( false ) } />
       <Bulb color={ bulbColor } />
     </OnOffBtnWrapper>
   );
