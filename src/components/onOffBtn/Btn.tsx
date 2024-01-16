@@ -10,7 +10,7 @@ type BtnPropsType = {
 
 export const Btn: React.FC<BtnPropsType> = (props) => {
   return (
-    <StyledBtn btnIsActive={ props.isActive } color={ props.color } onClick={ props.callback }>
+    <StyledBtn btnIsActive={ props.isActive } color={ props.color } onClick={ () => props.callback() }>
       { props.title }
     </StyledBtn>
   );
